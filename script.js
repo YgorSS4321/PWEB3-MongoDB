@@ -1,5 +1,7 @@
 import {listaColunas, Coluna, ToDo} from "/classeToDo.js";
 
+var tasksDatabase = [];
+
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
 var mainSection = document.getElementById("main");

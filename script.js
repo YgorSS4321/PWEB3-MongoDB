@@ -1,4 +1,4 @@
-import {listaColunas} from "/classeToDo.js";
+import {listaColunas, Coluna, ToDo} from "/classeToDo.js";
 
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
@@ -11,6 +11,11 @@ var a = 0;
 var b = 0;
 var c = 0;
 
+var c = new Coluna("coluna1");
+c.addToDo("titulo", "desc");
+
+console.log(c.listaToDo[0].titulo);
+console.log(c.listaToDo[0].descricao);
 
 
 var id_colunas = [];

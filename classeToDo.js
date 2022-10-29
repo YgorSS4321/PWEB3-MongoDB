@@ -1,4 +1,4 @@
-class ToDo{
+export class ToDo{
   titulo = "...";
   descricao = "...";
   isDone = false;
@@ -15,7 +15,7 @@ class ToDo{
   }
 }
 
-class Coluna{
+export class Coluna{
   titulo = "...";
   listaToDo = [];
 

@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
 var mainSection = document.getElementById("main");
 var tasksDatabase = [];
-=======
 import {listaColunas, Coluna, ToDo} from "/classeToDo.js";
 
 var element = document.getElementById("createColumn");
@@ -18,16 +16,12 @@ var a = 0;
 var b = 0;
 var c = 0;
 
-<<<<<<< HEAD
-=======
 var c = new Coluna("coluna1");
 c.addToDo("titulo", "desc");
 
 console.log(c.listaToDo[0].titulo);
 console.log(c.listaToDo[0].descricao);
 
-
->>>>>>> parent of c1061ca (commit)
 var id_colunas = [];
 
 function getIdColumn() {

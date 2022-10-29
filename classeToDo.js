@@ -33,6 +33,41 @@ export class Coluna{
   }
 }
 
+//===========
+
+
 export let listaColunas = [];
 
 
+
+//===========
+var c = new Coluna("coluna1");
+c.addToDo("titulo", "desc");
+
+console.log(c.listaToDo[0].titulo);
+console.log(c.listaToDo[0].descricao);
+
+listaColunas.push(new Coluna());
+
+
+function adicionarColuna(titulo){
+  var c = new Coluna(titulo);
+  listaColunas.push(c);
+}
+
+function adicionarToDo(tituloColuna, titulo, desc){
+  
+  var colunaEscolhida = listaColunas.filter((element) => element.titulo == tituloColuna)[0];
+  
+  colunaEscolhida.addToDo(titulo, desc);
+  
+}
+
+
+function removerToDo(tituloColuna, index){
+  var colunaEscolhida = listaColunas.filter((element) => element.titulo == tituloColuna)[0];
+
+  colunaEscolhida.removeByIndex(index);
+}
+
+export {adicionarColuna, adicionarToDo, removerToDo};

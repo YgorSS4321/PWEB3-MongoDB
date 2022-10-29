@@ -272,7 +272,7 @@ function definicaoTarefa(botaoColuna) { //tela de criar as tarefas; aqui ainda n
   div.appendChild(descricao);
   div.appendChild(inputButton1);
   div.appendChild(inputButton2);
-
+  
   colunaTemporaria(div, input, inputButton1, inputButton2);
   tarefaDesign(descricao, div);
   document.body.appendChild(div);
@@ -284,6 +284,13 @@ function definicaoTarefa(botaoColuna) { //tela de criar as tarefas; aqui ainda n
       document.querySelector("#divTemporariaTarefa").remove();
       mainSection.classList.toggle('hide');
     }
+
+    ///=======
+    
+
+    
+    console.log("addColumn?????");
+    ////====
   });
 
   inputButton1.addEventListener("click", function() {

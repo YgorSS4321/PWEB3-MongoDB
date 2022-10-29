@@ -7,7 +7,7 @@ import {listaColunas, Coluna, ToDo} from "/classeToDo.js";
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
 var mainSection = document.getElementById("main");
->>>>>>> parent of c1061ca (commit)
+
 var localStorageIndex = 0;
 var i = 0;
 var j = 0;

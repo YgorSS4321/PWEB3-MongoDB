@@ -6,15 +6,17 @@ const url = "mongodb+srv://kelvins213:database@cluster0.aaknyyf.mongodb.net/?ret
 
 async function connectMongoDB(){
     try{
-        mongoose.connect(url);
+        await mongoose.connect(url);
+        const db = mongoose.connection; //o atributo .connection do objeto mongoose retorna o banco de dados que você conectou
         console.log("Connected to MongoDB!");
     } catch (error) {
         console.error(error);
-    }
+    }  
 }
 connectMongoDB();
 
 app.listen(8000, () => {
     console.log("Server started on port 8000");
 });
+
 

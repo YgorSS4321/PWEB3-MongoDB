@@ -41,15 +41,6 @@ export let listaColunas = [];
 
 
 //===========
-var c = new Coluna("coluna1");
-c.addToDo("titulo", "desc");
-
-console.log(c.listaToDo[0].titulo);
-console.log(c.listaToDo[0].descricao);
-
-listaColunas.push(new Coluna());
-
-
 function adicionarColuna(titulo){
   var c = new Coluna(titulo);
   listaColunas.push(c);
@@ -63,11 +54,42 @@ function adicionarToDo(tituloColuna, titulo, desc){
   
 }
 
-
 function removerToDo(tituloColuna, index){
   var colunaEscolhida = listaColunas.filter((element) => element.titulo == tituloColuna)[0];
 
   colunaEscolhida.removeByIndex(index);
 }
 
-export {adicionarColuna, adicionarToDo, removerToDo};
+function moverToDo(tituloColOrigem, index, tituloColDestino){
+  var colunaOrigem = listaColunas.filter((element) => element.titulo == tituloColOrigem)[0];
+  var todoMover = colunaOrigem.listaToDo.splice(index, 1)[0];
+
+  var colunaDestino = listaColunas.filter((element) => element.titulo == tituloColDestino)[0];
+  
+  colunaDestino.listaToDo.push(todoMover);
+  
+
+}
+
+export {adicionarColuna, adicionarToDo, removerToDo, moverToDo};
+
+
+
+/*
+adicionarColuna("coluna1");
+adicionarToDo("coluna1", "titulo1", "desc1");
+adicionarToDo("coluna1", "titulo2", "desc2");
+adicionarToDo("coluna1", "titulo3", "desc3");
+adicionarToDo("coluna1", "titulo4", "desc4");
+//removerToDo("coluna1", 1);
+
+adicionarColuna("coluna2");
+adicionarToDo("coluna2", "titulo5", "desc5");
+adicionarToDo("coluna2", "titulo6", "desc6");
+adicionarToDo("coluna2", "titulo7", "desc7");
+adicionarToDo("coluna2", "titulo8", "desc8");
+
+moverToDo("coluna1", 1, "coluna2");
+
+console.log(listaColunas);
+*/

@@ -1,0 +1,23 @@
+{
+  "name": "pweb3-mongodb",
+  "version": "1.0.0",
+  "description": "Node application which connects with MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YgorSS4321/PWEB3-MongoDB.git"
+  },
+  "author": "Kelvin Holanda Leão Otilio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YgorSS4321/PWEB3-MongoDB/issues"
+  },
+  "homepage": "https://github.com/YgorSS4321/PWEB3-MongoDB#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.7.0"
+  }
+}

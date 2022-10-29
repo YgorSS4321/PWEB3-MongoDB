@@ -13,7 +13,9 @@ var b = 0;
 var c = 0;
 
 
-
+function mostrarV(){
+  console.log(listaColunas);
+}
 
 //console.log(c.listaToDo[0].titulo);
 //console.log(c.listaToDo[0].descricao);
@@ -151,6 +153,8 @@ function play() { //responsável por
   appendNewColumnFields(newColumn, titulo, inputSubmit);
   mainSection.classList.toggle('hide');
 
+  adicionarColuna(titulo); //adiciona nova coluna no listaColunas
+  //console.log(listaColunas);
 }
 
 function tarefaDesign(descricao, div) { //estiliza tarefa do daniel
@@ -345,6 +349,7 @@ function mudarTarefaSelect(id_div) {
     document.querySelector("#divTemporaria").remove();
     mainSection.classList.toggle('hide');
     element.disabled = false;
+
 
   });
 }

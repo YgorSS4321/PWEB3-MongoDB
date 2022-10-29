@@ -38,6 +38,14 @@ export class Coluna{
 
 export let listaColunas = [];
 
+function mostrarV(){
+  console.log(listaColunas);
+}
+
+document.getElementById("button-mostrar").addEventListener("click", mostrarV);
+
+
+
 
 
 //===========

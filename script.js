@@ -2,12 +2,6 @@ var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
 var mainSection = document.getElementById("main");
 var tasksDatabase = [];
-import {listaColunas, Coluna, ToDo} from "/classeToDo.js";
-
-var element = document.getElementById("createColumn");
-element.addEventListener("click", nameColumn);
-var mainSection = document.getElementById("main");
-
 var localStorageIndex = 0;
 var i = 0;
 var j = 0;
@@ -15,12 +9,6 @@ var k = 0;
 var a = 0;
 var b = 0;
 var c = 0;
-
-var c = new Coluna("coluna1");
-c.addToDo("titulo", "desc");
-
-console.log(c.listaToDo[0].titulo);
-console.log(c.listaToDo[0].descricao);
 
 var id_colunas = [];
 

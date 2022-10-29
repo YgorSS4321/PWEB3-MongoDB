@@ -1,7 +1,8 @@
+import {listaColunas} from "/classeToDo.js";
+
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
 var mainSection = document.getElementById("main");
-var tasksDatabase = [];
 var localStorageIndex = 0;
 var i = 0;
 var j = 0;
@@ -9,6 +10,8 @@ var k = 0;
 var a = 0;
 var b = 0;
 var c = 0;
+
+
 
 var id_colunas = [];
 

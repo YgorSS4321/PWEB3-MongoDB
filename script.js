@@ -1,9 +1,10 @@
-import {listaColunas, Coluna, ToDo} from "/classeToDo.js";
+import {listaColunas, Coluna, ToDo, adicionarColuna, adicionarToDo, removerToDo} from "/classeToDo.js";
 
 var tasksDatabase = [];
 
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
+var tasksDatabase = [];
 var mainSection = document.getElementById("main");
 var localStorageIndex = 0;
 var i = 0;
@@ -13,11 +14,16 @@ var a = 0;
 var b = 0;
 var c = 0;
 
-var c = new Coluna("coluna1");
-c.addToDo("titulo", "desc");
 
-console.log(c.listaToDo[0].titulo);
-console.log(c.listaToDo[0].descricao);
+function mostrarV(){
+  console.log(listaColunas);
+}
+
+//console.log(c.listaToDo[0].titulo);
+//console.log(c.listaToDo[0].descricao);
+
+
+
 
 
 var id_colunas = [];
@@ -149,6 +155,8 @@ function play() { //responsável por
   appendNewColumnFields(newColumn, titulo, inputSubmit);
   mainSection.classList.toggle('hide');
 
+  adicionarColuna(titulo); //adiciona nova coluna no listaColunas
+  //console.log(listaColunas);
 }
 
 function tarefaDesign(descricao, div) { //estiliza tarefa do daniel
@@ -344,6 +352,7 @@ function mudarTarefaSelect(id_div) {
     mainSection.classList.toggle('hide');
     element.disabled = false;
 
+
   });
 }
 
@@ -453,6 +462,7 @@ function cardTarefa(div, titulo, descricao, divColumnTask, divTaskDescrition) {
 
 
 }
+
 
 function tasksDatabaseGetsTasks(tasks) {
    localStorageIndex++;

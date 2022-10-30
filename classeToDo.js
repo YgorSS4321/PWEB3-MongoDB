@@ -36,7 +36,13 @@ export class Coluna{
 //===========
 
 
-export let listaColunas = [];
+export let listaColunas = [
+  {titulo: 'titulo', tarefas: [{tarefa: 'tarefa', descricao: 'descrição'}]},
+  {titulo: 'titulo2', tarefas: [{tarefa: 'tarefa2', descricao: 'descrição2'},
+  {tarefa: 'tarefa3', descricao: 'descrição3'}
+]}
+
+];
 
 function mostrarV(){
   console.log(listaColunas);
@@ -101,3 +107,13 @@ moverToDo("coluna1", 1, "coluna2");
 
 console.log(listaColunas);
 */
+
+export function addVarListaColunas(listaColunas, colunasBD, TaskBD){
+  listaColunas.map((coluna, ) =>{
+    let idColumn = colunasBD(coluna.titulo);
+    coluna.tarefas.map((tarefa) => {
+      TaskBD(tarefa.tarefa, tarefa.descricao, idColumn);      
+    });
+  })
+}
+

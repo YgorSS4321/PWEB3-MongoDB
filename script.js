@@ -1,6 +1,7 @@
-import {listaColunas, Coluna, ToDo, adicionarColuna, adicionarToDo, removerToDo} from "/classeToDo.js";
+import {listaColunas, Coluna, ToDo, adicionarColuna, addVarListaColunas, adicionarToDo, removerToDo} from "/classeToDo.js";
 
 var tasksDatabase = [];
+var id_colunas = [];
 
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
@@ -14,9 +15,58 @@ var a = 0;
 var b = 0;
 var c = 0;
 
+addVarListaColunas(listaColunas, colunasBD, TaskBD);
 
 function mostrarV(){
   console.log(listaColunas);
+}
+
+function colunasBD(colunaTitle){  
+  var div = document.createElement("div");
+  var h2 = document.createElement("h2");
+  h2.textContent = colunaTitle;
+  div.setAttribute("id", "column-" + getIdColumn());
+  setNewColumnStyle(div);
+  appendNewColumn(div);
+  var inputSubmit = createSubmitColumnField(div);
+  appendNewColumnFields(div, h2, inputSubmit);
+  return div.id;
+}
+
+function TaskBD(titulo, descricao, idColumn){
+  var title = document.createElement('h3');
+  title.textContent = titulo;
+  var description = document.createElement('p');
+  description.textContent = descricao;
+  var div = document.createElement('div');
+  div.setAttribute("onclick", "mudarTarefa(this.id);");
+  div.setAttribute("class", "naoFeita");
+  var id_div = getIdTask();  
+  div.setAttribute("id", id_div);
+  div.style.cursor = "pointer";
+  var divTaskDescrition = document.createElement('div');
+  var divColumnTask = document.createElement('div');
+
+
+  description.setAttribute("id", getIdDescription());
+
+
+
+
+
+  divTaskDescrition.appendChild(title);
+  divTaskDescrition.appendChild(description); 
+
+
+
+  div.appendChild(divTaskDescrition);
+  div.appendChild(divTaskDescrition);
+
+  var coluna = document.querySelector(`#${idColumn}`);
+  let botaocoluna = document.querySelector(`#${idColumn}`);
+  // coluna.insertBefore(div, botaocoluna);
+  coluna.appendChild(div);
+  cardTarefa(div, title, description, divColumnTask, divTaskDescrition);
 }
 
 //console.log(c.listaToDo[0].titulo);
@@ -26,7 +76,7 @@ function mostrarV(){
 
 
 
-var id_colunas = [];
+
 
 function getIdColumn() {
   id_colunas.push(`column-${i}`);
@@ -390,6 +440,9 @@ function preencherSelect(select) {
   }
 
 }
+
+
+
 
 function imprimirDiv(div) {
   console.log(div);

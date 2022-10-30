@@ -1,4 +1,4 @@
-import {listaColunas, Coluna, ToDo, adicionarColuna, adicionarToDo, removerToDo} from "/classeToDo.js";
+import {listaColunas, Coluna, ToDo, adicionarColuna, adicionarToDo, removerToDo, moverToDo} from "/classeToDo.js";
 
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
@@ -16,6 +16,27 @@ var c = 0;
 function mostrarV(){
   console.log(listaColunas);
 }
+
+function moverTask(){
+  var colunaO = prompt("digite o nome da coluna de origem");
+  var colunaD = prompt("digite o nome da coluna de destino");
+  var indice = prompt("digite o indice da task origem");
+
+  moverToDo(colunaO, indice, colunaD);
+
+  //atualizarTelaDoSite();
+}
+document.getElementById("button-mover").addEventListener("click", moverTask);
+
+function removerTask(){
+  var colunaO = prompt("digite o nome da coluna");
+  var indice = parseInt(prompt("digite o indice da task origem"));
+
+  removerToDo(colunaO, indice);
+
+  //atualizarTelaDoSite(); 
+}
+document.getElementById("button-remover").addEventListener("click", removerTask);
 
 //console.log(c.listaToDo[0].titulo);
 //console.log(c.listaToDo[0].descricao);
@@ -153,8 +174,11 @@ function play() { //responsável por
   appendNewColumnFields(newColumn, titulo, inputSubmit);
   mainSection.classList.toggle('hide');
 
-  adicionarColuna(titulo); //adiciona nova coluna no listaColunas
-  //console.log(listaColunas);
+  
+  var textoTitulo = titulo.innerHTML;
+  adicionarColuna(textoTitulo); //adiciona nova coluna no listaColunas
+  console.log(textoTitulo);
+  console.log(listaColunas);
 }
 
 function tarefaDesign(descricao, div) { //estiliza tarefa do daniel
@@ -272,7 +296,7 @@ function definicaoTarefa(botaoColuna) { //tela de criar as tarefas; aqui ainda n
   div.appendChild(descricao);
   div.appendChild(inputButton1);
   div.appendChild(inputButton2);
-
+  
   colunaTemporaria(div, input, inputButton1, inputButton2);
   tarefaDesign(descricao, div);
   document.body.appendChild(div);
@@ -284,6 +308,27 @@ function definicaoTarefa(botaoColuna) { //tela de criar as tarefas; aqui ainda n
       document.querySelector("#divTemporariaTarefa").remove();
       mainSection.classList.toggle('hide');
     }
+
+    ///=======
+    var novoToDo = new ToDo(input.value, descricao.value);
+    console.log(novoToDo);
+
+    var coluna = document.getElementById(botaoColuna.id);
+
+    var tituloColuna = document.querySelector(`#${botaoColuna.id} h2`).innerHTML.toString();
+    tituloColuna = tituloColuna.substring(0,7) + tituloColuna.substring(18, tituloColuna.length);
+    
+    ///console.log(coluna);
+    //console.log(tituloColuna.toString());
+    //adicionarColuna
+
+    adicionarToDo(tituloColuna, input.value, descricao.value);
+
+    
+    
+    
+    
+    ////======
   });
 
   inputButton1.addEventListener("click", function() {

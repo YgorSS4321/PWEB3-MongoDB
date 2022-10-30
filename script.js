@@ -153,8 +153,11 @@ function play() { //responsável por
   appendNewColumnFields(newColumn, titulo, inputSubmit);
   mainSection.classList.toggle('hide');
 
-  adicionarColuna(titulo); //adiciona nova coluna no listaColunas
-  //console.log(listaColunas);
+  
+  var textoTitulo = titulo.innerHTML;
+  adicionarColuna(textoTitulo); //adiciona nova coluna no listaColunas
+  console.log(textoTitulo);
+  console.log(listaColunas);
 }
 
 function tarefaDesign(descricao, div) { //estiliza tarefa do daniel
@@ -286,11 +289,25 @@ function definicaoTarefa(botaoColuna) { //tela de criar as tarefas; aqui ainda n
     }
 
     ///=======
+    var novoToDo = new ToDo(input.value, descricao.value);
+    console.log(novoToDo);
+
+    var coluna = document.getElementById(botaoColuna.id);
+
+    var tituloColuna = document.querySelector(`#${botaoColuna.id} h2`).innerHTML.toString();
+    tituloColuna = tituloColuna.substring(0,7) + tituloColuna.substring(18, tituloColuna.length);
     
+    ///console.log(coluna);
+    //console.log(tituloColuna.toString());
+    //adicionarColuna
+
+    adicionarToDo(tituloColuna, input.value, descricao.value);
 
     
-    console.log("addColumn?????");
-    ////====
+    
+    
+    
+    ////======
   });
 
   inputButton1.addEventListener("click", function() {

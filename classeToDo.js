@@ -21,6 +21,7 @@ export class Coluna{
 
   constructor(titulo){
     this.titulo = titulo;
+    this.listaToDo = [];
   }
 
   addToDo(titulo, descricao){
@@ -55,9 +56,14 @@ function adicionarColuna(titulo){
 }
 
 function adicionarToDo(tituloColuna, titulo, desc){
+  console.log("=========");
+  //console.log(listaColunas);
+  console.log("=========");
   
-  var colunaEscolhida = listaColunas.filter((element) => element.titulo == tituloColuna)[0];
-  
+  var colunaEscolhida = listaColunas.find(function(element){
+    return element.titulo == tituloColuna;
+  });
+
   colunaEscolhida.addToDo(titulo, desc);
   
 }

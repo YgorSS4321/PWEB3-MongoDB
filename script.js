@@ -1,3 +1,5 @@
+import {setToDoListTask} from "./schemas/schema.js";
+
 var element = document.getElementById("createColumn");
 element.addEventListener("click", nameColumn);
 var mainSection = document.getElementById("main");
@@ -190,7 +192,6 @@ function createNewNome() {
 function setNomeStyle(titulo) {
   titulo.style.fontsize = "32px";
 }
-
 
 function createSubmitColumnField(div) { //botao enviar
   var inputSubmit = document.createElement("input");
@@ -444,8 +445,10 @@ function cardTarefa(div, titulo, descricao, divColumnTask, divTaskDescrition) {
 
 }
 
+//toda vez que essa função for chamada, a função getToDoListTasks também deve ser.
 function tasksDatabaseGetsTasks(tasks) {
-   localStorageIndex++;
+  setToDoListTask(tasks);
+  localStorageIndex++;
   tasksDatabase.push(tasks.textContent);
   localStorage.setItem("Task-" + localStorageIndex + "°", tasks.textContent);
 }

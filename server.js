@@ -1,18 +1,34 @@
 //estudar toas router.post | router.get
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://kelvins213:database@cluster0.aaknyyf.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const mongoose = require("mongoose");
+const uri =
+  "mongodb+srv://kelvins213:database@cluster0.aaknyyf.mongodb.net/?retryWrites=true&w=majority";
 
-const toDoListSchema = require('./schemas/schema');
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-client.connect( async (err) => {
+mongoose.connection.db("todolist");
+
+const toDoListSchema = require("./schemas/schema");
+await insertData();
+
+client.connect(async (err) => {
   //const collection = client.db("todolist").collection("tasks");
   const collection = client.db("todolist");
-  await insertData();
   console.log("Connected to Database!");
   client.close();
 });
+
+async function insertData() {
+  const taskInformation = {
+    columnTitle: "task",
+    task: "oi",
+    description: "oi",
+  };
+  await new toDoListSchema(taskInformation).save();
+}
 
 /*
 recuperando os dados do banco
@@ -22,15 +38,6 @@ exports.list = async (req, res) => {
     });
 }
 */
-
-async function insertData(){
-    const taskInformation = {
-        columnTitle: task,
-        task: "oi",
-        description: "oi",
-    };
-    await new toDoListSchema(taskInformation).save();
-}
 
 /*
 const mongoClient = require("mongodb").MongoClient;

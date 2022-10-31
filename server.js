@@ -1,18 +1,31 @@
+//estudar toas router.post | router.get
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://kelvins213:database@cluster0.aaknyyf.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
 const toDoListSchema = require('./schemas/schema');
 
 client.connect( async (err) => {
-  const collection = client.db("todolist").collection("tasks");
+  //const collection = client.db("todolist").collection("tasks");
+  const collection = client.db("todolist");
   await insertData();
   console.log("Connected to Database!");
   client.close();
 });
 
+/*
+recuperando os dados do banco
+exports.list = async (req, res) => {
+    await toDoListSchema.find({}).exec( function (err, docs){
+        res.render();
+    });
+}
+*/
+
 async function insertData(){
     const taskInformation = {
-        //columnTitle: task,
+        columnTitle: task,
         task: "oi",
         description: "oi",
     };

@@ -80,3 +80,100 @@ div#regras p{
   color: white;
   margin-top: 10px;
 }
+
+.styleColumn{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  height: 100%;
+  width: 30%;
+  border-radius: 10px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.inputNewTarefa{
+  width: 150px;
+  height: 50px;
+  background: #1d6bb4;
+  cursor: pointer;
+  border: none;
+  border-radius: 25px;
+  margin: 15px;
+}
+
+
+
+.naoFeita{
+  width: 90%;
+  padding: 0.3rem;
+  display: block;
+  margin: 3% 0;
+  border-radius: 10px;
+  float: left;
+  margin-right: 10px;
+}
+
+.tituloCard{
+  color: white;
+  width: 20%;
+}
+
+.descricaoCard{
+  color: black;
+  width: 20%;
+}
+
+.colTemporariaDiv{
+  display: flex;
+  flex-wrap: wrap;
+  width: 28rem;
+  height: 14rem;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 10px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -7rem;
+  margin-left: -14rem;
+}
+.colTemporariaInput{
+  width: 100%;
+  height: 1.5rem;
+  margin: 5% 15%;
+  display: block;
+  padding: 0.4rem;
+  min-width: 70%;
+}
+.colTemporariaInput2{
+  width: 35%;
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+  color: red;
+}
+.colTemporariaInput3{
+  width: 35%;
+  height: 2rem;
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  cursor: pointer;
+  color: green;
+  border: none;
+}
+
+.taskDesignDescricao{
+  width: 100%;
+  margin: 0% 15% 5% 15%;
+  max-height: 3rem;
+  min-height: 3rem;
+  min-width: 70%;
+  padding: 0.4rem;
+}

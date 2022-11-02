@@ -26,7 +26,7 @@ function colunasBD(colunaTitle){
   var h2 = document.createElement("h2");
   h2.textContent = colunaTitle;
   div.setAttribute("id", "column-" + getIdColumn());
-  setNewColumnStyle(div);
+  div.setAttribute("class", 'styleColumn');
   appendNewColumn(div);
   var inputSubmit = createSubmitColumnField(div);
   appendNewColumnFields(div, h2, inputSubmit);
@@ -40,37 +40,21 @@ function TaskBD(titulo, descricao, idColumn){
   description.textContent = descricao;
   var div = document.createElement('div');
   div.setAttribute("onclick", "mudarTarefa(this.id);");
-  div.setAttribute("class", "naoFeita");
   var id_div = getIdTask();  
   div.setAttribute("id", id_div);
-  div.style.cursor = "pointer";
-  var divTaskDescrition = document.createElement('div');
-  var divColumnTask = document.createElement('div');
-
+  div.style.cursor = "pointer";    
 
   description.setAttribute("id", getIdDescription());
-
-
-
-
-
-  divTaskDescrition.appendChild(title);
-  divTaskDescrition.appendChild(description); 
-
-
-
-  div.appendChild(divTaskDescrition);
-  div.appendChild(divTaskDescrition);
+  
+  div.appendChild(title);
+  div.appendChild(description);
 
   var coluna = document.querySelector(`#${idColumn}`);
   let botaocoluna = document.querySelector(`#${idColumn}`);
   // coluna.insertBefore(div, botaocoluna);
+  cardTarefa(div, title, description);
   coluna.appendChild(div);
-  cardTarefa(div, title, description, divColumnTask, divTaskDescrition);
 }
-
-//console.log(c.listaToDo[0].titulo);
-//console.log(c.listaToDo[0].descricao);
 
 
 
@@ -151,51 +135,16 @@ function nameColumn() { //criando coluna
   });
 }
 
-function colunaTemporaria(div, input, input2, input3) { //estilização coluna
-
-  div.style.display = "flex";
-  div.style.flexWrap = "wrap";
-  div.style.width = "28rem";
-  div.style.height = "14rem";
-  div.style.padding = "0.5rem"
-  div.style.backgroundColor = "white";
-  div.style.borderRadius = "10px";
-  div.style.position = "fixed";
-  div.style.left = "50%";
-  div.style.top = "50%";
-  div.style.marginTop = "-7rem";
-  div.style.marginLeft = "-14rem";
-
-
-  input.style.width = "100%";
-  input.style.height = "1.5rem";
-  input.style.margin = "5% 15%";
-  input.style.display = "block";
-  input.style.padding = "0.4rem";
-
-  input2.style.width = "35%";
-  input2.style.height = "2rem";
-  input2.style.width = "150px";
-  input2.style.height = "50px";
-  input2.style.borderRadius = "25px";
-  input2.style.cursor = "pointer";
-  input2.style.border = "none";
-  input2.style.color = "red";
-
-  input3.style.width = "35%";
-  input3.style.height = "2rem";
-  input3.style.width = "150px";
-  input3.style.height = "50px";
-  input3.style.borderRadius = "25px";
-  input3.style.cursor = "pointer";
-  input3.style.color = "green";
-  input3.style.border = "none";
-
+function colunaTemporaria(div, input, input2, input3) {
+  div.setAttribute("class", "colTemporariaDiv");
+  input.setAttribute("class", "colTemporariaInput");
+  input2.setAttribute("class", "colTemporariaInput2");
+  input3.setAttribute("class", "colTemporariaInput3");
 }
 
 function play() { //responsável por 
   var newColumn = createNewColumn(); //adiciona div de tarefas feitas, fazendo, cumpridas
-  setNewColumnStyle(newColumn);
+  newColumn.setAttribute("class", 'styleColumn');
   appendNewColumn(newColumn); //adiciona div
   var titulo = createNewNome(); //dá nome à coluna
   document.querySelector("#divTemporaria").remove();
@@ -205,24 +154,14 @@ function play() { //responsável por
   appendNewColumnFields(newColumn, titulo, inputSubmit);
   mainSection.classList.toggle('hide');
 
-  adicionarColuna(titulo); //adiciona nova coluna no listaColunas
-  //console.log(listaColunas);
+  adicionarColuna(titulo);
 }
 
-function tarefaDesign(descricao, div) { //estiliza tarefa do daniel
-  descricao.style.width = "100%";
-  descricao.style.margin = "0% 15% 5% 15%";
-  descricao.style.maxHeight = "3rem";
-  descricao.style.minHeight = "3rem";
-  descricao.style.minWidth = "70%";
-  descricao.style.padding = "0.4rem";
-  //descricao.style.  o que tinha aqui???
-
+function tarefaDesign(descricao, div) {
+  descricao.setAttribute("class", "taskDesignDescricao");
   div.style.height = "16rem";
 
 }
-
-/*As próximas funções são as que eu criei. Servem para adicionar a coluna de tarefas, inicializada com o título da coluna e o botão de nova tarefa */
 
 function createNewColumn() {
   var div = document.createElement("div");
@@ -231,18 +170,6 @@ function createNewColumn() {
   return div;
 }
 
-function setNewColumnStyle(div) {
-  div.style.display = "flex";
-  div.style.flexDirection = "column";
-  div.style.justifyContent = "space-around";
-  div.style.alignItems = "center";
-  div.style.backgroundColor = "white";
-  div.style.height = "100%";
-  div.style.width = "30%";
-  div.style.borderRadius = "10px";
-  div.style.marginTop = "2%";
-  div.style.marginBottom = "2%";
-}
 
 function appendNewColumn(div) {
   mainSection.appendChild(div);
@@ -265,23 +192,11 @@ function createSubmitColumnField(div) { //botao enviar
   inputSubmit.setAttribute("type", "submit");
   inputSubmit.setAttribute("value", "NOVA TAREFA");
   inputSubmit.id = div.id;
-  inputSubmit.style.width = "150px";
-  inputSubmit.style.height = "50px";
-  inputSubmit.style.background = "#1d6bb4";
-  inputSubmit.style.cursor = "pointer";
-  inputSubmit.style.border = "none";
-  inputSubmit.style.borderRadius = "25px";
-  inputSubmit.style.margin = "15px";
+  inputSubmit.setAttribute("class", "inputNewTarefa")
   inputSubmit.addEventListener("click", () => { definicaoTarefa(inputSubmit) });
   return inputSubmit;
 }
 
-function setSubmitColumnFieldStyle(inputSubmit) {
-  inputSubmit.style.marginTop = "2%";
-  inputSubmit.style.marginBottom = "2%";
-  inputSubmit.style.borderRadius = "5px";
-  inputSubmit.style.border = "none";
-}
 
 function appendNewColumnFields(div, titulo, inputSubmit) { //adicionando div
   div.appendChild(titulo);
@@ -456,66 +371,31 @@ function insertTasks2(botaocoluna) { //reconstruindo coluna, agora com as tasks
   var descricao = document.createElement('p');
   descricao.textContent = document.querySelector('#descricao').value;
   var div = document.createElement('div');
-  div.setAttribute("onclick", "mudarTarefa(this.id);");
-  div.setAttribute("class", "naoFeita");
+  div.setAttribute("onclick", "mudarTarefa(this.id);");  
   var id_div = getIdTask();
   imprimirDiv(div);
   div.setAttribute("id", id_div);
   div.style.cursor = "pointer";
-  var divTaskDescrition = document.createElement('div');
-  var divColumnTask = document.createElement('div');
 
 
   descricao.setAttribute("id", getIdDescription());
 
-
-
-
-
-  divTaskDescrition.appendChild(titulo);
-  divTaskDescrition.appendChild(descricao); 
-
-
-
-  div.appendChild(divTaskDescrition);
-  div.appendChild(divColumnTask);
+  div.appendChild(titulo);
+  div.appendChild(descricao);
 
   var coluna = document.querySelector(`#${botaocoluna.id}`);
-  coluna.insertBefore(div, botaocoluna);
+  coluna.appendChild(div);
 
-  cardTarefa(div, titulo, descricao, divColumnTask, divTaskDescrition);
-
-  
+  cardTarefa(div, titulo, descricao);
 }
 
 
-function cardTarefa(div, titulo, descricao, divColumnTask, divTaskDescrition) {
-  div.style.width = "90%";
-
-  div.style.padding = "0.3rem";
-  div.style.display = "block";
-  div.style.margin = "3% 0";
-  div.style.borderRadius = "10px";
-  div.style.float = "left";
-
-
-  titulo.style.color = "white";
-  titulo.style.width = "20%";
-
-
-  descricao.style.color = "black";
-  descricao.style.width = "20%";
-
-
-  divTaskDescrition.style.display = "flex";
-  divTaskDescrition.style.flexWrap = "wrap";
-  divTaskDescrition.style.flexDirection = "column";
-  divTaskDescrition.style.alignItems = "center";
-  div.style.marginRight = "10px";
-
+function cardTarefa(div, titulo, descricao) {
+  div.setAttribute("class", "naoFeita");
+  titulo.setAttribute("class", "tituloCard");
+  descricao.setAttribute("class", "descricaoCard");
 
 }
-
 
 function tasksDatabaseGetsTasks(tasks) {
    localStorageIndex++;

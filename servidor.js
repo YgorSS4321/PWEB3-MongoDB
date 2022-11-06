@@ -19,6 +19,8 @@ app.get("/img/onlyList_logo.png", function(req,res){
     res.sendFile(__dirname + "/img/onlyList_logo.png")
 })
 
-app.listen(3000);
 
-console.log('executando...');
+app.listen(3000, () => {
+    console.log('executando...');
+});
+

@@ -1,8 +1,7 @@
 //estudar toas router.post | router.get
 
 const mongoose = require("mongoose");
-const uri =
-  "mongodb+srv://kelvins213:database@cluster0.aaknyyf.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://kelvins213:database@cluster0.aaknyyf.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(uri, {
   useNewUrlParser: true,

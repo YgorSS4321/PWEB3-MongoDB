@@ -19,9 +19,9 @@ export class Coluna{
   titulo = "...";
   listaToDo = [];
 
-  constructor(titulo){
+  constructor(titulo, lista){
     this.titulo = titulo;
-    this.listaToDo = [];
+    this.listaToDo = lista != undefined? lista : [];
   }
 
   addToDo(titulo, descricao){
@@ -37,13 +37,16 @@ export class Coluna{
 //===========
 
 
-export let listaColunas = [];
+export let listaColunas = [
+  new Coluna("titulo", [new ToDo("tarefa", "descricao")]),
+  new Coluna("titulo2", [new ToDo("tarefa2", "descricao2"), new ToDo("tarefa3", "descricao3")]),
+];
 
 function mostrarV(){
   console.log(listaColunas);
 }
 
-document.getElementById("button-mostrar").addEventListener("click", mostrarV);
+//document.getElementById("button-mostrar").addEventListener("click", mostrarV);
 
 
 
@@ -107,3 +110,13 @@ moverToDo("coluna1", 1, "coluna2");
 
 console.log(listaColunas);
 */
+
+export function addVarListaColunas(listaColunas, colunasBD, TaskBD){
+  listaColunas.map((coluna, ) =>{
+    let idColumn = colunasBD(coluna.titulo);
+    coluna.listaToDo.map((tarefa) => {
+      TaskBD(tarefa.titulo, tarefa.descricao, idColumn);      
+    });
+  })
+}
+

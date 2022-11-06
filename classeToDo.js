@@ -46,7 +46,7 @@ function mostrarV(){
   console.log(listaColunas);
 }
 
-//document.getElementById("button-mostrar").addEventListener("click", mostrarV);
+document.getElementById("button-mostrar").addEventListener("click", mostrarV);
 
 
 

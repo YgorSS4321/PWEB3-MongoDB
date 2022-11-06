@@ -114,8 +114,8 @@ console.log(listaColunas);
 export function addVarListaColunas(listaColunas, colunasBD, TaskBD){
   listaColunas.map((coluna, ) =>{
     let idColumn = colunasBD(coluna.titulo);
-    coluna.tarefas.map((tarefa) => {
-      TaskBD(tarefa.tarefa, tarefa.descricao, idColumn);      
+    coluna.listaToDo.map((tarefa) => {
+      TaskBD(tarefa.titulo, tarefa.descricao, idColumn);      
     });
   })
 }

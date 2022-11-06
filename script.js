@@ -30,7 +30,7 @@ function moverTask(){
 
   //atualizarTelaDoSite();
 }
-document.getElementById("button-mover").addEventListener("click", moverTask);
+//document.getElementById("button-mover").addEventListener("click", moverTask);
 
 function removerTask(){
   var colunaO = prompt("digite o nome da coluna");
@@ -40,7 +40,7 @@ function removerTask(){
 
   //atualizarTelaDoSite(); 
 }
-document.getElementById("button-remover").addEventListener("click", removerTask);
+//document.getElementById("button-remover").addEventListener("click", removerTask);
 
 //console.log(c.listaToDo[0].titulo);
 //console.log(c.listaToDo[0].descricao);

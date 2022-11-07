@@ -1,4 +1,4 @@
-import {listaColunas, Coluna, ToDo, adicionarColuna, addVarListaColunas, adicionarToDo, removerToDo} from "/classeToDo.js";
+import {listaColunas, Coluna, ToDo, adicionarColuna, addVarListaColunas, adicionarToDo, removerToDo, moverToDo} from "/classeToDo.js";
 
 var tasksDatabase = [];
 var id_colunas = [];
@@ -28,9 +28,12 @@ function moverTask(){
 
   moverToDo(colunaO, indice, colunaD);
 
-  //atualizarTelaDoSite();
+  // esse codigo atualiza a tela
+  document.getElementById("main").innerHTML = "";
+  addVarListaColunas(listaColunas, colunasBD, TaskBD);
+  //
 }
-//document.getElementById("button-mover").addEventListener("click", moverTask);
+document.getElementById("button-mover").addEventListener("click", moverTask);
 
 function removerTask(){
   var colunaO = prompt("digite o nome da coluna");
@@ -39,8 +42,10 @@ function removerTask(){
   removerToDo(colunaO, indice);
 
   //atualizarTelaDoSite(); 
+  document.getElementById("main").innerHTML = "";
+  addVarListaColunas(listaColunas, colunasBD, TaskBD);
 }
-//document.getElementById("button-remover").addEventListener("click", removerTask);
+document.getElementById("button-remover").addEventListener("click", removerTask);
 
 //console.log(c.listaToDo[0].titulo);
 //console.log(c.listaToDo[0].descricao);
